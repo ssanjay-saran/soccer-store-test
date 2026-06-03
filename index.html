@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FutbolGear | Premium Soccer Apparel</title>
+    <!-- Tailwind CSS via CDN for rapid styling and easy modifications -->
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 text-gray-900 font-sans">
+
+    <!-- Global Navigation Bar -->
+    <nav class="bg-black text-white sticky top-0 z-50 shadow-md">
+        <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+            <a href="index.html" class="text-2xl font-black tracking-wider text-yellow-400">FUTBOLGEAR</a>
+            <div class="space-x-6 font-semibold">
+                <a href="index.html" class="hover:text-yellow-400 transition">Home</a>
+                <a href="team.html?team=all" class="hover:text-yellow-400 transition">Shop All</a>
+                <a href="cart.html" class="relative hover:text-yellow-400 transition">
+                    Cart 🛒
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Marketing Hero Banner (Great for testing CTA conversion rates) -->
+    <header class="bg-gradient-to-r from-blue-900 to-black text-white py-20 px-4 text-center">
+        <div class="max-w-3xl mx-auto">
+            <span class="bg-red-600 text-xs uppercase font-bold px-3 py-1 rounded-full tracking-widest">Limited Drop</span>
+            <h1 class="text-5xl font-extrabold mt-4 mb-6 tracking-tight">Your Team. Your Colors.</h1>
+            <p class="text-xl text-gray-300 mb-8">Premium quality hoodies, t-shirts, and training gear for the world's biggest clubs.</p>
+            <a href="team.html?team=all" class="bg-yellow-400 text-black font-bold px-8 py-4 rounded shadow-lg hover:bg-yellow-300 transition inline-block text-lg">
+                Shop All Jerseys →
+            </a>
+        </div>
+    </header>
+
+    <!-- Main Content: Top 10 Teams Grid -->
+    <main class="max-w-7xl mx-auto px-4 py-16">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl font-black uppercase tracking-tight">Shop by Club</h2>
+            <p class="text-gray-600 mt-2">Select a team to explore their exclusive collection</p>
+        </div>
+
+        <!-- 10 Popular Teams Grid -->
+        <div id="team-grid" class="grid grid-cols-2 md:grid-cols-5 gap-6">
+            <!-- Dynamic generation handled by JavaScript below -->
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-400 py-8 text-center border-t border-gray-800 mt-20">
+        <p>&copy; 2026 FutbolGear Sandbox Store. Built for Funnel Optimization Analysis.</p>
+    </footer>
+
+    <!-- Logic to construct the grid and pass URL parameters -->
+    <script>
+        const teams = [
+            { id: "real-madrid", name: "Real Madrid", color: "from-blue-600 to-sky-400" },
+            { id: "barcelona", name: "Barcelona", color: "from-blue-900 to-red-700" },
+            { id: "manchester-united", name: "Manchester United", color: "from-red-700 to-red-500" },
+            { id: "manchester-city", name: "Manchester City", color: "from-sky-400 to-blue-300" },
+            { id: "liverpool", name: "Liverpool", color: "from-red-800 to-darkred" },
+            { id: "arsenal", name: "Arsenal", color: "from-red-600 to-white border" },
+            { id: "psg", name: "PSG", color: "from-blue-950 to-red-600" },
+            { id: "bayern-munich", name: "Bayern Munich", color: "from-red-700 to-blue-800" },
+            { id: "jed-juventus", name: "Juventus", color: "from-gray-800 to-black" },
+            { id: "inter-miami", name: "Inter Miami", color: "from-pink-400 to-black" }
+        ];
+
+        const grid = document.getElementById('team-grid');
+
+        teams.forEach(team => {
+            const card = document.createElement('a');
+            // This URL parameter configuration passes data cleanly to the next funnel stage
+            card.href = `team.html?team=${team.id}`;
+            card.className = "group block bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-xl transition duration-300 border border-gray-100 text-center p-6";
+            
+            card.innerHTML = `
+                <div class="w-20 h-20 mx-auto rounded-full bg-gradient-to-tr ${team.color} mb-4 shadow-inner flex items-center justify-center text-white font-bold tracking-wider text-xs uppercase opacity-90 group-hover:scale-105 transition transform duration-300">
+                    ⚽
+                </div>
+                <h3 class="font-bold text-lg text-gray-800 group-hover:text-blue-600 transition">${team.name}</h3>
+                <span class="text-xs text-gray-500 mt-1 inline-block">View Collection →</span>
+            `;
+            grid.appendChild(card);
+        });
+    </script>
+</body>
+</html>
