@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buy Apparel | FutbolGear</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 text-gray-900 font-sans">
+
+    <nav class="bg-black text-white sticky top-0 z-50 shadow-md">
+        <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+            <a href="index.html" class="text-2xl font-black tracking-wider text-yellow-400">FUTBOLGEAR</a>
+            <div class="space-x-6 font-semibold">
+                <a href="index.html" class="hover:text-yellow-400 transition">Home</a>
+                <a href="team.html?team=all" class="hover:text-yellow-400 transition">Shop All</a>
+                <a href="cart.html" class="hover:text-yellow-400 transition">Cart 🛒</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="max-w-5xl mx-auto px-4 py-12">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 bg-white p-8 rounded-2xl shadow-sm border border-gray-100">
+            
+            <!-- Graphic Block -->
+            <div id="product-icon" class="w-full h-80 bg-gray-100 rounded-xl flex items-center justify-center text-9xl shadow-inner">
+                👕
+            </div>
+
+            <!-- Configuration Form -->
+            <div>
+                <span id="brand-tag" class="text-xs font-bold text-blue-600 uppercase tracking-widest">Premium Gear</span>
+                <h1 id="product-title" class="text-3xl font-black mt-1 mb-2">Loading Product...</h1>
+                
+                <div class="flex items-center space-x-2 mb-6">
+                    <span class="text-yellow-500 font-bold">⭐⭐⭐⭐⭐ 4.8</span>
+                    <span class="text-xs text-gray-400">(514 verified ratings)</span>
+                </div>
+
+                <!-- Price and dynamic discount display -->
+                <div id="price-block" class="mb-6">
+                    <!-- Configured dynamically via JS -->
+                </div>
+
+                <!-- Funnel Variants -->
+                <div class="space-y-6">
+                    <div>
+                        <label class="block text-xs font-bold uppercase tracking-wider text-gray-500 mb-2">Select Fit</label>
+                        <div class="flex space-x-3">
+                            <button class="variant-btn border-2 border-black bg-black text-white px-4 py-2 rounded text-sm font-semibold">Unisex</button>
+                            <button class="variant-btn border-2 border-gray-200 px-4 py-2 rounded text-sm font-semibold hover:border-gray-400">Male</button>
+                            <button class="variant-btn border-2 border-gray-200 px-4 py-2 rounded text-sm font-semibold hover:border-gray-400">Female</button>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-bold uppercase tracking-wider text-gray-500 mb-2">Size (M Selection)</label>
+                        <div class="flex space-x-2">
+                            <button class="size-btn border border-gray-200 w-10 h-10 rounded text-sm font-bold flex items-center justify-center hover:border-black">S</button>
+                            <button class="size-btn border-2 border-black w-10 h-10 rounded text-sm font-bold flex items-center justify-center">M</button>
+                            <button class="size-btn border border-gray-200 w-10 h-10 rounded text-sm font-bold flex items-center justify-center hover:border-black">L</button>
+                            <button class="size-btn border border-gray-200 w-10 h-10 rounded text-sm font-bold flex items-center justify-center hover:border-black">XL</button>
+                            <button class="size-btn border border-gray-200 w-10 h-10 rounded text-sm font-bold flex items-center justify-center hover:border-black">XXL</button>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-bold uppercase tracking-wider text-gray-500 mb-2">Color Variant (N Selection)</label>
+                        <div class="flex space-x-3">
+                            <button class="color-btn border-2 border-black px-4 py-2 rounded text-xs font-bold uppercase tracking-wider">Home Kit</button>
+                            <button class="color-btn border border-gray-200 px-4 py-2 rounded text-xs font-bold uppercase tracking-wider text-gray-600 hover:border-gray-400">Away Kit</button>
+                            <button class="color-btn border border-gray-200 px-4 py-2 rounded text-xs font-bold uppercase tracking-wider text-gray-600 hover:border-gray-400">Third Alternative</button>
+                        </div>
+                    </div>
+
+                    <button onclick="addToCart()" class="w-full bg-red-600 hover:bg-red-700 text-white font-black py-4 px-6 rounded-xl transition text-lg tracking-wide uppercase shadow-lg shadow-red-100 mt-4">
+                        Add To Bag 🛒
+                    </button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        const teams = { "real-madrid": "Real Madrid", "barcelona": "Barcelona", "manchester-united": "Manchester United", "manchester-city": "Manchester City", "liverpool": "Liverpool", "arsenal": "Arsenal", "psg": "PSG", "bayern-munich": "Bayern Munich", "jed-juventus": "Juventus", "inter-miami": "Inter Miami" };
+        const items = {
+            "jersey": { name: "Official Match Jersey", price: 75, icon: "👕" },
+            "hoodie": { name: "Club Fleece Hoodie", price: 85, icon: "🧥" },
+            "shorts": { name: "Pre-Match Shorts", price: 45, icon: "🩳" },
+            "pants": { name: "Elite Training Pants", price: 65, icon: "👖" },
+            "shoes": { name: "Club Edition Sneakers", price: 120, icon: "👟" }
+        };
+
+        const urlParams = new URLSearchParams(window.location.search);
+        const teamId = urlParams.get('team') || 'real-madrid';
+        const itemId = urlParams.get('item') || 'jersey';
+
+        const teamName = teams[teamId];
+        const productInfo = items[itemId];
+
+        document.getElementById('brand-tag').innerText = teamName;
+        document.getElementById('product-title').innerText = `${teamName} ${productInfo.name}`;
+        document.getElementById('product-icon').innerText = productInfo.icon;
+
+        // Dynamic Discount Funnel Engine
+        let finalPrice = productInfo.price;
+        const priceBlock = document.getElementById('price-block');
+        const triggerDiscount = Math.random() < 0.40; // 40% chance of high-converting flash promotion
+
+        if (triggerDiscount) {
+            const discountPercentage = Math.floor(15 + Math.random() * 16); // 15% to 30%
+            finalPrice = (productInfo.price * (1 - discountPercentage / 100)).toFixed(2);
+            priceBlock.innerHTML = `
+                <div class="flex items-baseline space-x-3">
+                    <span class="text-3xl font-black text-red-600">$${finalPrice}</span>
+                    <span class="text-lg text-gray-400 line-through">$${productInfo.price}</span>
+                    <span class="bg-red-100 text-red-700 text-xs font-extrabold px-2 py-1 rounded uppercase tracking-wider">${discountPercentage}% OFF FLASH SALE</span>
+                </div>
+            `;
+        } else {
+            priceBlock.innerHTML = `<span class="text-3xl font-black text-gray-900">$${productInfo.price}</span>`;
+        }
+
+        function addToCart() {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            cart.push({
+                name: `${teamName} ${productInfo.name}`,
+                price: parseFloat(finalPrice),
+                icon: productInfo.icon
+            });
+            localStorage.setItem('cart', JSON.stringify(cart));
+            window.location.href = 'cart.html';
+        }
+    </script>
+</body>
+</html>
