@@ -18,6 +18,7 @@
         <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N5ZDZCR2"
         height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
+
     <nav class="bg-black text-white sticky top-0 z-50 shadow-md">
         <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
             <a href="index.html" class="text-2xl font-black tracking-wider text-yellow-400">FUTBOLGEAR</a>
@@ -34,7 +35,7 @@
             
             <!-- Graphic Block -->
             <div id="product-icon" class="w-full h-80 bg-gray-100 rounded-xl flex items-center justify-center text-9xl shadow-inner">
-                ??
+                👕
             </div>
 
             <!-- Configuration Form -->
@@ -43,7 +44,7 @@
                 <h1 id="product-title" class="text-3xl font-black mt-1 mb-2">Loading Product...</h1>
                 
                 <div class="flex items-center space-x-2 mb-6">
-                    <span class="text-yellow-500 font-bold">?????????? 4.8</span>
+                    <span class="text-yellow-500 font-bold">⭐⭐⭐⭐⭐ 4.8</span>
                     <span class="text-xs text-gray-400">(514 verified ratings)</span>
                 </div>
 
@@ -82,7 +83,7 @@
                     </div>
 
                     <button onclick="addToCart()" class="w-full bg-red-600 hover:bg-red-700 text-white font-black py-4 px-6 rounded-xl transition text-lg tracking-wide uppercase shadow-lg shadow-red-100 mt-4">
-                        Add To Bag ??????
+                        Add To Bag 🛒
                     </button>
                 </div>
             </div>
@@ -92,16 +93,18 @@
     <script>
         const teams = { "real-madrid": "Real Madrid", "barcelona": "Barcelona", "manchester-united": "Manchester United", "manchester-city": "Manchester City", "liverpool": "Liverpool", "arsenal": "Arsenal", "psg": "PSG", "bayern-munich": "Bayern Munich", "jed-juventus": "Juventus", "inter-miami": "Inter Miami" };
         const items = {
-            "jersey": { name: "Official Match Jersey", price: 75, icon: "??" },
-            "hoodie": { name: "Club Fleece Hoodie", price: 85, icon: "??" },
-            "shorts": { name: "Pre-Match Shorts", price: 45, icon: "??" },
-            "pants": { name: "Elite Training Pants", price: 65, icon: "??" },
-            "shoes": { name: "Club Edition Sneakers", price: 120, icon: "??" }
+            "jersey": { name: "Official Match Jersey", price: 75, icon: "👕" },
+            "hoodie": { name: "Club Fleece Hoodie", price: 85, icon: "🧥" },
+            "shorts": { name: "Pre-Match Shorts", price: 45, icon: "🩳" },
+            "pants": { name: "Elite Training Pants", price: 65, icon: "👖" },
+            "shoes": { name: "Club Edition Sneakers", price: 120, icon: "👟" }
         };
 
         const urlParams = new URLSearchParams(window.location.search);
         const teamId = urlParams.get('team') || 'real-madrid';
         const itemId = urlParams.get('item') || 'jersey';
+        // Read the exact discount code explicitly passed out of the team landing interface
+        const passedDiscount = parseInt(urlParams.get('discount')) || 0;
 
         const teamName = teams[teamId];
         const productInfo = items[itemId];
@@ -110,12 +113,11 @@
         document.getElementById('product-title').innerText = `${teamName} ${productInfo.name}`;
         document.getElementById('product-icon').innerText = productInfo.icon;
 
-        // Default Selections
+        // Configuration States
         let selectedFit = "Unisex";
         let selectedSize = "M";
         let selectedColor = "Home Kit";
 
-        // Dynamic Interactive UI Selection States
         function setupSelectionLogic(buttonClass, storageCallback) {
             const buttons = document.querySelectorAll(buttonClass);
             buttons.forEach(btn => {
@@ -135,19 +137,17 @@
         setupSelectionLogic('.size-btn', (val) => selectedSize = val);
         setupSelectionLogic('.color-btn', (val) => selectedColor = val);
 
-        // Flash Sale Pricing Logic
+        // Process pricing based entirely on parameters passed down the funnel
         let finalPrice = productInfo.price;
         const priceBlock = document.getElementById('price-block');
-        const triggerDiscount = Math.random() < 0.40;
 
-        if (triggerDiscount) {
-            const discountPercentage = Math.floor(15 + Math.random() * 16);
-            finalPrice = (productInfo.price * (1 - discountPercentage / 100)).toFixed(2);
+        if (passedDiscount > 0) {
+            finalPrice = (productInfo.price * (1 - passedDiscount / 100)).toFixed(2);
             priceBlock.innerHTML = `
                 <div class="flex items-baseline space-x-3">
                     <span class="text-3xl font-black text-red-600">$${finalPrice}</span>
                     <span class="text-lg text-gray-400 line-through">$${productInfo.price}</span>
-                    <span class="bg-red-100 text-red-700 text-xs font-extrabold px-2 py-1 rounded uppercase tracking-wider">${discountPercentage}% OFF FLASH SALE</span>
+                    <span class="bg-red-100 text-red-700 text-xs font-extrabold px-2 py-1 rounded uppercase tracking-wider">${passedDiscount}% OFF FLASH SALE</span>
                 </div>
             `;
         } else {
