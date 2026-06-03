@@ -24,7 +24,7 @@
             
             <!-- Graphic Block -->
             <div id="product-icon" class="w-full h-80 bg-gray-100 rounded-xl flex items-center justify-center text-9xl shadow-inner">
-                👕
+                ??
             </div>
 
             <!-- Configuration Form -->
@@ -33,48 +33,46 @@
                 <h1 id="product-title" class="text-3xl font-black mt-1 mb-2">Loading Product...</h1>
                 
                 <div class="flex items-center space-x-2 mb-6">
-                    <span class="text-yellow-500 font-bold">⭐⭐⭐⭐⭐ 4.8</span>
+                    <span class="text-yellow-500 font-bold">?????????? 4.8</span>
                     <span class="text-xs text-gray-400">(514 verified ratings)</span>
                 </div>
 
-                <!-- Price and dynamic discount display -->
-                <div id="price-block" class="mb-6">
-                    <!-- Configured dynamically via JS -->
-                </div>
+                <!-- Price display -->
+                <div id="price-block" class="mb-6"></div>
 
                 <!-- Funnel Variants -->
                 <div class="space-y-6">
                     <div>
                         <label class="block text-xs font-bold uppercase tracking-wider text-gray-500 mb-2">Select Fit</label>
                         <div class="flex space-x-3">
-                            <button class="variant-btn border-2 border-black bg-black text-white px-4 py-2 rounded text-sm font-semibold">Unisex</button>
-                            <button class="variant-btn border-2 border-gray-200 px-4 py-2 rounded text-sm font-semibold hover:border-gray-400">Male</button>
-                            <button class="variant-btn border-2 border-gray-200 px-4 py-2 rounded text-sm font-semibold hover:border-gray-400">Female</button>
+                            <button class="fit-btn border-2 border-black bg-black text-white px-4 py-2 rounded text-sm font-semibold">Unisex</button>
+                            <button class="fit-btn border-2 border-gray-200 text-gray-600 px-4 py-2 rounded text-sm font-semibold hover:border-gray-400">Male</button>
+                            <button class="fit-btn border-2 border-gray-200 text-gray-600 px-4 py-2 rounded text-sm font-semibold hover:border-gray-400">Female</button>
                         </div>
                     </div>
 
                     <div>
-                        <label class="block text-xs font-bold uppercase tracking-wider text-gray-500 mb-2">Size (M Selection)</label>
+                        <label class="block text-xs font-bold uppercase tracking-wider text-gray-500 mb-2">Size</label>
                         <div class="flex space-x-2">
-                            <button class="size-btn border border-gray-200 w-10 h-10 rounded text-sm font-bold flex items-center justify-center hover:border-black">S</button>
-                            <button class="size-btn border-2 border-black w-10 h-10 rounded text-sm font-bold flex items-center justify-center">M</button>
-                            <button class="size-btn border border-gray-200 w-10 h-10 rounded text-sm font-bold flex items-center justify-center hover:border-black">L</button>
-                            <button class="size-btn border border-gray-200 w-10 h-10 rounded text-sm font-bold flex items-center justify-center hover:border-black">XL</button>
-                            <button class="size-btn border border-gray-200 w-10 h-10 rounded text-sm font-bold flex items-center justify-center hover:border-black">XXL</button>
+                            <button class="size-btn border-2 border-gray-200 text-gray-600 w-10 h-10 rounded text-sm font-bold flex items-center justify-center hover:border-black">S</button>
+                            <button class="size-btn border-2 border-black bg-black text-white w-10 h-10 rounded text-sm font-bold flex items-center justify-center">M</button>
+                            <button class="size-btn border-2 border-gray-200 text-gray-600 w-10 h-10 rounded text-sm font-bold flex items-center justify-center hover:border-black">L</button>
+                            <button class="size-btn border-2 border-gray-200 text-gray-600 w-10 h-10 rounded text-sm font-bold flex items-center justify-center hover:border-black">XL</button>
+                            <button class="size-btn border-2 border-gray-200 text-gray-600 w-10 h-10 rounded text-sm font-bold flex items-center justify-center hover:border-black">XXL</button>
                         </div>
                     </div>
 
                     <div>
-                        <label class="block text-xs font-bold uppercase tracking-wider text-gray-500 mb-2">Color Variant (N Selection)</label>
+                        <label class="block text-xs font-bold uppercase tracking-wider text-gray-500 mb-2">Color Variant</label>
                         <div class="flex space-x-3">
-                            <button class="color-btn border-2 border-black px-4 py-2 rounded text-xs font-bold uppercase tracking-wider">Home Kit</button>
-                            <button class="color-btn border border-gray-200 px-4 py-2 rounded text-xs font-bold uppercase tracking-wider text-gray-600 hover:border-gray-400">Away Kit</button>
-                            <button class="color-btn border border-gray-200 px-4 py-2 rounded text-xs font-bold uppercase tracking-wider text-gray-600 hover:border-gray-400">Third Alternative</button>
+                            <button class="color-btn border-2 border-black bg-black text-white px-4 py-2 rounded text-xs font-bold uppercase tracking-wider">Home Kit</button>
+                            <button class="color-btn border-2 border-gray-200 text-gray-600 px-4 py-2 rounded text-xs font-bold uppercase tracking-wider hover:border-gray-400">Away Kit</button>
+                            <button class="color-btn border-2 border-gray-200 text-gray-600 px-4 py-2 rounded text-xs font-bold uppercase tracking-wider hover:border-gray-400">Third Alternative</button>
                         </div>
                     </div>
 
                     <button onclick="addToCart()" class="w-full bg-red-600 hover:bg-red-700 text-white font-black py-4 px-6 rounded-xl transition text-lg tracking-wide uppercase shadow-lg shadow-red-100 mt-4">
-                        Add To Bag 🛒
+                        Add To Bag ??????
                     </button>
                 </div>
             </div>
@@ -84,11 +82,11 @@
     <script>
         const teams = { "real-madrid": "Real Madrid", "barcelona": "Barcelona", "manchester-united": "Manchester United", "manchester-city": "Manchester City", "liverpool": "Liverpool", "arsenal": "Arsenal", "psg": "PSG", "bayern-munich": "Bayern Munich", "jed-juventus": "Juventus", "inter-miami": "Inter Miami" };
         const items = {
-            "jersey": { name: "Official Match Jersey", price: 75, icon: "👕" },
-            "hoodie": { name: "Club Fleece Hoodie", price: 85, icon: "🧥" },
-            "shorts": { name: "Pre-Match Shorts", price: 45, icon: "🩳" },
-            "pants": { name: "Elite Training Pants", price: 65, icon: "👖" },
-            "shoes": { name: "Club Edition Sneakers", price: 120, icon: "👟" }
+            "jersey": { name: "Official Match Jersey", price: 75, icon: "??" },
+            "hoodie": { name: "Club Fleece Hoodie", price: 85, icon: "??" },
+            "shorts": { name: "Pre-Match Shorts", price: 45, icon: "??" },
+            "pants": { name: "Elite Training Pants", price: 65, icon: "??" },
+            "shoes": { name: "Club Edition Sneakers", price: 120, icon: "??" }
         };
 
         const urlParams = new URLSearchParams(window.location.search);
@@ -102,13 +100,38 @@
         document.getElementById('product-title').innerText = `${teamName} ${productInfo.name}`;
         document.getElementById('product-icon').innerText = productInfo.icon;
 
-        // Dynamic Discount Funnel Engine
+        // Default Selections
+        let selectedFit = "Unisex";
+        let selectedSize = "M";
+        let selectedColor = "Home Kit";
+
+        // Dynamic Interactive UI Selection States
+        function setupSelectionLogic(buttonClass, storageCallback) {
+            const buttons = document.querySelectorAll(buttonClass);
+            buttons.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    buttons.forEach(b => {
+                        b.classList.remove('bg-black', 'text-white', 'border-black');
+                        b.classList.add('border-gray-200', 'text-gray-600');
+                    });
+                    btn.classList.add('bg-black', 'text-white', 'border-black');
+                    btn.classList.remove('border-gray-200', 'text-gray-600');
+                    storageCallback(btn.innerText);
+                });
+            });
+        }
+
+        setupSelectionLogic('.fit-btn', (val) => selectedFit = val);
+        setupSelectionLogic('.size-btn', (val) => selectedSize = val);
+        setupSelectionLogic('.color-btn', (val) => selectedColor = val);
+
+        // Flash Sale Pricing Logic
         let finalPrice = productInfo.price;
         const priceBlock = document.getElementById('price-block');
-        const triggerDiscount = Math.random() < 0.40; // 40% chance of high-converting flash promotion
+        const triggerDiscount = Math.random() < 0.40;
 
         if (triggerDiscount) {
-            const discountPercentage = Math.floor(15 + Math.random() * 16); // 15% to 30%
+            const discountPercentage = Math.floor(15 + Math.random() * 16);
             finalPrice = (productInfo.price * (1 - discountPercentage / 100)).toFixed(2);
             priceBlock.innerHTML = `
                 <div class="flex items-baseline space-x-3">
@@ -126,7 +149,10 @@
             cart.push({
                 name: `${teamName} ${productInfo.name}`,
                 price: parseFloat(finalPrice),
-                icon: productInfo.icon
+                icon: productInfo.icon,
+                fit: selectedFit,
+                size: selectedSize,
+                color: selectedColor
             });
             localStorage.setItem('cart', JSON.stringify(cart));
             window.location.href = 'cart.html';
